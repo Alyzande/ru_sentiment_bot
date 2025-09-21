@@ -48,9 +48,9 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Your custom JavaScript -->
-    <script>
-        // Your existing JavaScript code here
+
+    <!-- <script>
+   
        function analyzeText() {
     const text = document.getElementById('textInput').value;
     const resultDiv = document.getElementById('result');
@@ -97,7 +97,7 @@
         resultDiv.style.display = 'block';
     });
 }
-    </script>
+    </script> -->
 
 <!-- News Analysis Section -->
 <div class="container mt-5">
@@ -118,7 +118,7 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
 function analyzeNews() {
     const newsResults = document.getElementById('newsResults');
     newsResults.innerHTML = '<div class="text-center"><div class="spinner-border text-info"></div><p>Загружаем новости...</p></div>';
@@ -143,7 +143,7 @@ function analyzeNews() {
             newsResults.innerHTML = '<div class="alert alert-danger">Ошибка загрузки новостей</div>';
         });
 }
-</script>
-
+</script> -->
+ <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
