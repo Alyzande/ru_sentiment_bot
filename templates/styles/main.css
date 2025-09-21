@@ -1,27 +1,31 @@
-/* styles/main.css */
 body {
-    background: linear-gradient(to bottom, #ffffff 33%, #d52b1e 33%, #d52b1e 66%, #0039a6 66%);
-    min-height: 100vh;
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffffff 33%, #d52b1e 33%, #d52b1e 66%, #0039a6 66%) !important;
+    background-attachment: fixed !important;
+}
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 20px;
 }
 
+:root {
+    --bs-body-bg: transparent !important;
+}
+
 .container {
-    background: rgba(255, 255, 255, 0.98);
+    background: transparent !important;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     padding: 2.5rem;
     margin-top: 3rem;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .card {
     border: none;
     border-radius: 18px;
     overflow: hidden;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .card-header {
@@ -40,7 +44,7 @@ body {
 
 .card-body {
     padding: 2.5rem;
-    background: white;
+    background: transparent;
 }
 
 .btn-primary {
@@ -51,8 +55,6 @@ body {
     font-weight: 700;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
@@ -109,9 +111,4 @@ body {
     font-weight: 500;
     margin-bottom: 1.5rem;
     text-align: center;
-}
-
-/* Make sure the body background is visible */
-html, body {
-    height: 100%;
 }
