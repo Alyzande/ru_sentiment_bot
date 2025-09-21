@@ -1,9 +1,9 @@
 # app.py
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from transformers import pipeline
 from flask_cors import CORS  # Important for frontend-backend communication
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='styles')
 CORS(app)  # This allows your frontend to talk to the backend
 
 # Load the model ONCE when the server starts
@@ -37,6 +37,13 @@ def analyze_sentiment():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

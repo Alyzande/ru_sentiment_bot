@@ -1,0 +1,117 @@
+/* styles/main.css */
+body {
+    background: linear-gradient(to bottom, #ffffff 33%, #d52b1e 33%, #d52b1e 66%, #0039a6 66%);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    margin-top: 3rem;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #0039a6 0%, #002080 100%);
+    border: none;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-header h1 {
+    font-weight: 800;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.card-body {
+    padding: 2.5rem;
+    background: white;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d52b1e 0%, #b22222 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 15px 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b22222 0%, #9b1c1c 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(179, 34, 34, 0.4);
+}
+
+.form-control {
+    border-radius: 12px;
+    border: 3px solid #e9ecef;
+    padding: 15px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.form-control:focus {
+    border-color: #0039a6;
+    box-shadow: 0 0 0 0.3rem rgba(0, 57, 166, 0.3);
+    transform: scale(1.02);
+}
+
+#result {
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+    display: none;
+    font-size: 1.2rem;
+    border: 3px solid transparent;
+}
+
+.alert-positive {
+    background: linear-gradient(135deg, #d4edda 0%, #b8dfc2 100%);
+    color: #155724;
+    border-color: #8ac39a;
+}
+
+.alert-negative {
+    background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+    color: #721c24;
+    border-color: #e4959b;
+}
+
+.alert-neutral {
+    background: linear-gradient(135deg, #e2e3e5 0%, #c8cbcf 100%);
+    color: #383d41;
+    border-color: #a1a5a9;
+}
+
+.text-muted {
+    color: #5a6268 !important;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Make sure the body background is visible */
+html, body {
+    height: 100%;
+}

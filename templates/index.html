@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Russian Sentiment Analyzer</title>
-    <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 20px; }
-        #result { margin-top: 20px; padding: 15px; border-radius: 5px; display: none; }
-        .positive { background-color: #d4edda; color: #155724; }
-        .negative { background-color: #f8d7da; color: #721c24; }
-        .neutral { background-color: #e2e3e5; color: #383d41; }
-    </style>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    <h1>Анализ настроений 🇷🇺</h1>
-    <p>Введите русский текст для анализа:</p>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h1 class="h3 mb-0">Анализ настроений 🇷🇺</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Введите русский текст для анализа:</p>
+                        
+                        <textarea id="textInput" class="form-control mb-3" rows="4" 
+                                  placeholder="Введите текст здесь..."></textarea>
+                        
+                        <button class="btn btn-primary w-100" onclick="analyzeText()">
+                            Анализировать
+                        </button>
+
+                        <div id="result" class="mt-4 p-3 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <textarea id="textInput" rows="4" cols="50" placeholder="Введите текст здесь..."></textarea>
-    <br>
-    <button onclick="analyzeText()">Анализировать</button>
-
-    <div id="result"></div>
-
+    <!-- Your custom JavaScript -->
     <script>
+        // Your existing JavaScript code here
         function analyzeText() {
             const text = document.getElementById('textInput').value;
             const resultDiv = document.getElementById('result');
@@ -40,11 +61,10 @@
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    resultDiv.className = 'error';
+                    resultDiv.className = 'alert alert-danger';
                     resultDiv.innerHTML = `Error: ${data.error}`;
                 } else {
-                    // Set the appropriate CSS class based on sentiment
-                    resultDiv.className = data.sentiment.toLowerCase();
+                    resultDiv.className = `alert alert-${data.sentiment.toLowerCase()}`;
                     resultDiv.innerHTML = `
                         <strong>Текст:</strong> ${data.text}<br>
                         <strong>Настроение:</strong> ${data.sentiment}<br>
@@ -54,8 +74,8 @@
                 resultDiv.style.display = 'block';
             })
             .catch(error => {
-                resultDiv.className = 'error';
-                resultDiv.innerHTML = 'Error connecting to the server';
+                resultDiv.className = 'alert alert-danger';
+                resultDiv.innerHTML = 'Ошибка соединения с сервером';
                 resultDiv.style.display = 'block';
             });
         }
