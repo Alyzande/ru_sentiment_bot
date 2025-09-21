@@ -29,3 +29,13 @@ pip install -r requirements.txt
 # Run application
 python app.py
 
+## Usage
+Enter Russian text for instant sentiment analysis
+
+Click "Анализировать" for results with confidence scores
+
+Use "Проанализировать свежие заголовки" to analyze live Russian news
+
+Live Demo
+SOON
+
