@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Russian Sentiment Analyzer</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 20px; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; display: none; }
+        .positive { background-color: #d4edda; color: #155724; }
+        .negative { background-color: #f8d7da; color: #721c24; }
+        .neutral { background-color: #e2e3e5; color: #383d41; }
+    </style>
+</head>
+<body>
+    <h1>Анализ настроений 🇷🇺</h1>
+    <p>Введите русский текст для анализа:</p>
+    
+    <textarea id="textInput" rows="4" cols="50" placeholder="Введите текст здесь..."></textarea>
+    <br>
+    <button onclick="analyzeText()">Анализировать</button>
+
+    <div id="result"></div>
+
+    <script>
+        function analyzeText() {
+            const text = document.getElementById('textInput').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.style.display = 'none';
+            
+            if (!text) {
+                alert('Пожалуйста, введите текст для анализа');
+                return;
+            }
+
+            fetch('http://localhost:5000/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    resultDiv.className = 'error';
+                    resultDiv.innerHTML = `Error: ${data.error}`;
+                } else {
+                    // Set the appropriate CSS class based on sentiment
+                    resultDiv.className = data.sentiment.toLowerCase();
+                    resultDiv.innerHTML = `
+                        <strong>Текст:</strong> ${data.text}<br>
+                        <strong>Настроение:</strong> ${data.sentiment}<br>
+                        <strong>Уверенность:</strong> ${(data.confidence * 100).toFixed(2)}%
+                    `;
+                }
+                resultDiv.style.display = 'block';
+            })
+            .catch(error => {
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = 'Error connecting to the server';
+                resultDiv.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
