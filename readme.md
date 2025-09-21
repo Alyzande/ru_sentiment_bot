@@ -1,6 +1,6 @@
-# Russian Sentiment Analyzer 🇷🇺
+# Russian Sentiment Analyser 🇷🇺
 
-A real-time web application that analyzes sentiment in Russian text using AI. Features live Russian news analysis with sentiment scoring.
+A real-time web application that analyses sentiment in Russian text using AI. Features live Russian news analysis with sentiment scoring.
 
 ## Features
 
