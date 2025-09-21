@@ -29,7 +29,8 @@ pip install -r requirements.txt
 # Run application
 python app.py
 
-## Usage
+## Useage
+
 Enter Russian text for instant sentiment analysis
 
 Click "Анализировать" for results with confidence scores
