@@ -1,6 +1,6 @@
-# Russian Sentiment Analyzer 🇷🇺
+# Russian Sentiment Analyser 🇷🇺
 
-A real-time web application that analyzes sentiment in Russian text using AI. Features live Russian news analysis with sentiment scoring.
+A real-time web application that analyses sentiment in Russian text using AI. Features live Russian news analysis with sentiment scoring.
 
 ## Features
 
@@ -9,7 +9,7 @@ A real-time web application that analyzes sentiment in Russian text using AI. Fe
 - 🎨 Beautiful Russian flag-themed interface
 - ⚡ Live loading indicators and color-coded results
 - 🌐 Full-stack Flask + Bootstrap application
-<<<<<<< HEAD
+
 =======
 
 ## Tech Stack
@@ -30,6 +30,8 @@ pip install -r requirements.txt
 
 # Run application
 python app.py
+
+=======
 
 ## Useage
 
