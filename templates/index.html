@@ -98,5 +98,52 @@
     });
 }
     </script>
+
+<!-- News Analysis Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white text-center">
+                    <h2 class="h4 mb-0">📰 Анализ новостей России</h2>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-info w-100" onclick="analyzeNews()">
+                        Проанализировать свежие заголовки
+                    </button>
+                    <div id="newsResults" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function analyzeNews() {
+    const newsResults = document.getElementById('newsResults');
+    newsResults.innerHTML = '<div class="text-center"><div class="spinner-border text-info"></div><p>Загружаем новости...</p></div>';
+    
+    fetch('/api/russian-news')
+        .then(response => response.json())
+        .then(news => {
+            let html = '<h4>Результаты анализа:</h4>';
+            news.forEach(item => {
+                html += `
+                    <div class="alert alert-${item.sentiment.toLowerCase()} mb-2">
+                        <strong>${item.headline}</strong><br>
+                        Источник: ${item.source} | 
+                        Настроение: ${item.sentiment} | 
+                        Уверенность: ${item.confidence}%
+                    </div>
+                `;
+            });
+            newsResults.innerHTML = html;
+        })
+        .catch(error => {
+            newsResults.innerHTML = '<div class="alert alert-danger">Ошибка загрузки новостей</div>';
+        });
+}
+</script>
+
 </body>
 </html>
